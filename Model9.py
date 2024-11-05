@@ -14,7 +14,7 @@ model_root_cause = joblib.load('model_root_cause.pkl')
 vectorizer = joblib.load('vectorizer.pkl')
 
 # Streamlit app
-st.title("ServiceNow INC Categorization and Root Cause Prediction")
+st.title("ServiceNow INC Impacted Module/Functionality and Root Cause Prediction")
 
 # File uploader
 uploaded_file = st.file_uploader("Choose an Excel file", type="xlsx")
@@ -97,7 +97,7 @@ if uploaded_file is not None:
         plt.tight_layout(pad=3.0)
         st.pyplot(fig)
         # Plot confusion matrix for categorization
-        st.write("Confusion Matrix for Categorization:")
+        st.write("Confusion Matrix :")
         conf_matrix_category = confusion_matrix(y_category, df_filtered['Predicted Impacted Module/Functionality'])
         fig, ax = plt.subplots(figsize=(10, 7))
         sns.heatmap(conf_matrix_category, annot=True, fmt='d', cmap='Blues', xticklabels=model_category.classes_, yticklabels=model_category.classes_, ax=ax)
