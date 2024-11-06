@@ -64,7 +64,7 @@ if uploaded_file is not None:
         
         # Display predictions in tabular form
         st.write("Predictions:")
-        st.dataframe(df_filtered[['Short description', 'Close notes', 'Description', 'Predicted Impacted Module/Functionality', 'Predicted Root Cause']])
+        st.dataframe(df_filtered[['Short description', 'Close notes', 'Predicted Impacted Module/Functionality', 'Predicted Root Cause']])
         # Evaluate the models
         accuracy_category = accuracy_score(y_category, df_filtered['Predicted Impacted Module/Functionality'])
         report_category = classification_report(y_category, df_filtered['Predicted Impacted Module/Functionality'], zero_division=1, output_dict=True)
