@@ -28,7 +28,7 @@ if uploaded_file is not None:
     st.dataframe(df.head())
     
     # Ensure the required columns exist
-    required_columns = ['Short description', 'Category(u_category)', 'Configuration Item', 'Close notes', 'Description']
+    required_columns = ['Short description', 'Category(u_category)', 'Configuration Item', 'Close notes']
     missing_columns = [column for column in required_columns if column not in df.columns]
     
     if missing_columns:
@@ -45,7 +45,7 @@ if uploaded_file is not None:
         df_filtered = df[df['Configuration Item'] == selected_application].copy()
         
         # Combine text columns for feature extraction
-        df_filtered.loc[:, 'Combined Text'] = df_filtered['Short description'] + ' ' + df_filtered['Close notes'] + ' ' + df_filtered['Description'] + ' ' + df_filtered['Category(u_category)']
+        df_filtered.loc[:, 'Combined Text'] = df_filtered['Short description'] + ' ' + df_filtered['Close notes'] + ' ' + df_filtered['Category(u_category)']
         
         # Split data into features and labels
         X = df_filtered['Combined Text']
